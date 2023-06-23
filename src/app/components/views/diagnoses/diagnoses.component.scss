@@ -1,0 +1,103 @@
+@import '../../../../custom-theme.scss';
+
+$primary: map-get($SymptomScoutWeb-theme, "primary");
+$accent: map-get($SymptomScoutWeb-theme, "accent");
+$warn: map-get($SymptomScoutWeb-theme, "warn");
+$primaryContrast: map-get($primary, "contrast");
+
+div.head-section-label {
+    font-size: 48px;
+    font-weight: bolder;
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+.flex {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+div.head-section {
+    flex-direction: column;
+}
+
+mat-form-field {
+    width: 440px;
+}
+
+div.search-header {
+    text-align: center;
+    font-weight: bolder;
+    padding-bottom: 20px;
+}
+
+div.search {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    column-gap: 80px;
+    width: 100%;
+}
+
+div.search-list{
+    display:flex;
+    flex-direction: column;
+    flex: 1;
+    width: 480px;
+    height: 400px;
+    border: 2px solid map-get($primary, 600);
+    border-radius: 12px;
+    box-shadow: inset 1px 1px 4px black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    scroll-padding-top: 20px;
+    scroll-padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: map-get($primary, 100);
+    row-gap: 10px;
+    overflow-y:  scroll;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
+
+mat-icon.already-search-item-icon {
+    color: map-get($primary, 600);
+}
+
+mat-icon.remove-search-list-item-icon {
+    display:flex;
+    flex-shrink: 1;
+    color:  map-get($warn, 700);
+    width: 48px;
+}
+
+div.search-list::-webkit-scrollbar {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    display: none;
+}
+
+div.search-list-item {
+    display:flex;
+    flex-grow: 0;
+    flex-direction: row;
+    font-weight: bolder;
+    min-height: 40px;
+    max-height: 40px;
+    border: 2px solid map-get($primary, 600);
+    border-radius: 28px;
+    box-shadow: 1px 1px 4px black;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background: map-get($primary, 200);
+}
+
+div.search-list-item-label {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

@@ -1,0 +1,33 @@
+@import '../../../../../custom-theme.scss';
+
+$primary: map-get($SymptomScoutWeb-theme, "primary");
+$accent: map-get($SymptomScoutWeb-theme, "accent");
+$primaryContrast: map-get($primary, "contrast");
+
+div.content {
+    display:flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 100%;
+    border-right: 3px solid map-get($primary, 600);
+    color: map-get($primaryContrast, 200);
+    background: map-get($primary, 200);
+}
+
+span.menu {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+mat-nav-list {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+mat-list-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
