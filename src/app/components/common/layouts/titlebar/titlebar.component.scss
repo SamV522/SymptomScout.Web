@@ -1,0 +1,16 @@
+@import '../../../../../custom-theme.scss';
+
+$primary: map-get($SymptomScoutWeb-theme, "primary");
+$primaryContrast: map-get($primary, "contrast");
+
+div.content {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 10px;
+    height: 75px;
+    font-size: 40px;
+    color: map-get($primaryContrast, 900);
+    background: linear-gradient(0deg, map-get($primary, 900) 0%, map-get($primary, 500));
+    text-shadow: 2px 2px 4px black;
+}

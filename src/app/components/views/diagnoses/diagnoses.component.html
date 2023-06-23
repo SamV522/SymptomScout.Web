@@ -1,0 +1,24 @@
+<div class="flex head-section">
+    <div class="flex head-section-label">Diagnoses</div>
+    <div class="flex">
+        <mat-form-field>
+            <mat-label>Diagnosis</mat-label>
+            <input 
+            [(ngModel)]="diagnosesInput" 
+            matInput type="text" 
+            placeholder="Anxiety..." 
+            (keydown.enter)="updateFilteredDiagnoses()"
+            (input)="onDiagnosisInputChange($event)">
+        </mat-form-field>
+    </div>
+</div>
+<div class="search">
+    <div>
+        <div class="search-header">Diagnoses</div>
+        <div class="search-list">
+            <div class="search-list-item" *ngFor="let diagnosis of filteredDiagnoses;">
+                <div class="search-list-item-label">{{ diagnosis.name }}</div>
+            </div>
+        </div>
+    </div>
+</div>
