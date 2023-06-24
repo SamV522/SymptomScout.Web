@@ -1,3 +1,3 @@
 {
-    "baseUrl": "https://symptomscout-app.azurewebsites.net/api"
+    "baseUrl": "https://symptomscout-api.azurewebsites.net/api"
 }

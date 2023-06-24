@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1e5093a4-3ec1-4550-8883-90bee8ef2899/resourceGroups/SymptomScout/providers/Microsoft.Web/sites/symptomscout-app",
+    "appService.deploySubpath": "dist"
+}

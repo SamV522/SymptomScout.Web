@@ -22,7 +22,8 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/web.config"
             ],
             "styles": [
               "src/custom-theme.scss",
@@ -34,8 +35,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/assets/config/config.json",
-                  "with": "src/assets/config/config.production.json"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.production.ts"
                 }
               ],
               "budgets": [
@@ -53,6 +54,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,

@@ -4,7 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { bootConfigServiceProvider } from 'ng-config-service';
+import { NG_CONFIG_URL_TOKEN, bootConfigServiceProvider } from 'ng-config-service';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +17,10 @@ import { bootConfigServiceProvider } from 'ng-config-service';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [bootConfigServiceProvider],
+  providers: [
+    { provide: NG_CONFIG_URL_TOKEN, useValue: 'assets/config/' + environment.configFile},
+    bootConfigServiceProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
