@@ -75,7 +75,7 @@ export class SymptomMatchComponent implements AfterViewInit {
   }
 
   removeSymptom(symptom: Symptom) {
-    this.symptomsToSearch.splice(this.symptomsToSearch.indexOf(symptom));
+    this.symptomsToSearch.splice(this.symptomsToSearch.indexOf(symptom), 1);
     this.updateDiagnoses();
   }
 
