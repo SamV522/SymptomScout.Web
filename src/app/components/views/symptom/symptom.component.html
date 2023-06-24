@@ -6,13 +6,12 @@
         </div>
         <div class="flex-gap flex-row-container flex-grow content">
             <!-- Description -->
-            <div class="flex-grow">
+            <div class="description flex-grow">
                 {{ symptom.description }}
             </div>
             <!-- Diagnoses -->
             <div class="list hide-scroll">
-                <app-diagnosis-card *ngFor="let diagnosis of symptom.diagnoses;">
-
+                <app-diagnosis-card [diagnosis]="diagnosis" *ngFor="let diagnosis of symptom.diagnoses;">
                 </app-diagnosis-card>
             </div>
         </div>

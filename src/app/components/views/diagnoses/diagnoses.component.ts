@@ -28,6 +28,7 @@ export class DiagnosesComponent {
       next: 
       (diagnoses) => {
         this.diagnoses = diagnoses;
+        this.updateFilteredDiagnoses();
       }, error: (error) =>
       {
         console.log(error);
@@ -37,28 +38,19 @@ export class DiagnosesComponent {
   }
 
   updateFilteredDiagnoses(): void {
-    if (this.diagnosesInput.length < 3)
-      this.filteredDiagnoses = [];
-    else
-      this.filteredDiagnoses = this.diagnoses.filter(s => s.name.substring(0,this.diagnosesInput.length).toLowerCase() == this.diagnosesInput.toLowerCase());
+    this.filteredDiagnoses = this.diagnoses.filter(s => s.name.substring(0,this.diagnosesInput.length).toLowerCase() == this.diagnosesInput.toLowerCase());
   }
 
   diagnosisSelected(event: MatAutocompleteSelectedEvent )
   {
-    const symptom: Symptom = event.option.value;
+    const diagnosis: Diagnosis = event.option.value;
 
-    if (symptom)
-      this.diagnosesInput = symptom.name;
+    if (diagnosis)
+      this.diagnosesInput = diagnosis.name;
   }
 
   onDiagnosisInputChange(event: Event)
   {
-    if (this.diagnosesInput.length < 3)
-    {
-      this.filteredDiagnoses = [];
-      return;
-    } else {
-      this.updateFilteredDiagnoses();
-    }
+    this.updateFilteredDiagnoses();
   }
 }

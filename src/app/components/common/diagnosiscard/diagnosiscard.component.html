@@ -1,1 +1,4 @@
-<p>diagnosiscard works!</p>
+<div class="content">
+    <div class="label">{{ diagnosis.name }}</div>
+    <button *ngIf="!disableOpenDiagnosis" mat-icon-button (click)="openDiagnosisClickEvent(diagnosis)"><mat-icon class="open-icon">open_in_new</mat-icon></button>
+</div>

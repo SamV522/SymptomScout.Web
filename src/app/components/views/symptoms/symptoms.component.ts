@@ -28,6 +28,7 @@ export class SymptomsComponent {
       next: 
       (symptoms) => {
         this.symptoms = symptoms;
+        this.updateFilteredSymptoms();
       }, error: (error) =>
       {
         console.log(error);
@@ -37,10 +38,7 @@ export class SymptomsComponent {
   }
 
   updateFilteredSymptoms(): void {
-    if (this.symptomInput.length < 3)
-      this.filteredSymptoms = [];
-    else
-      this.filteredSymptoms = this.symptoms.filter(s => s.name.substring(0,this.symptomInput.length).toLowerCase() == this.symptomInput.toLowerCase());
+    this.filteredSymptoms = this.symptoms.filter(s => s.name.substring(0,this.symptomInput.length).toLowerCase() == this.symptomInput.toLowerCase());
   }
 
   symptomSelected(event: MatAutocompleteSelectedEvent )
@@ -53,12 +51,6 @@ export class SymptomsComponent {
 
   onSymptomInputChange(event: Event)
   {
-    if (this.symptomInput.length < 3)
-    {
-      this.filteredSymptoms = [];
-      return;
-    } else {
-      this.updateFilteredSymptoms();
-    }
+    this.updateFilteredSymptoms();
   }
 }

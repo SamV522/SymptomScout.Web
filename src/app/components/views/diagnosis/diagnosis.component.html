@@ -1,1 +1,19 @@
-<p>diagnosis works!</p>
+<ng-container *ngIf="diagnosis$ | async as diagnosis">
+    <div class="flex-column-container flex-grow">
+        <!-- Heading -->
+        <div class="heading-section-label flex-grow">
+            {{ diagnosis.name }}
+        </div>
+        <div class="flex-gap flex-row-container flex-grow content">
+            <!-- Description -->
+            <div class="description flex-grow">
+                {{ diagnosis.description }}
+            </div>
+            <!-- Symptoms -->
+            <div class="list hide-scroll">
+                <app-symptom-card [symptom]="diagnosisSymptom" *ngFor="let diagnosisSymptom of diagnosis.symptoms;">
+                </app-symptom-card>
+            </div>
+        </div>
+    </div>
+</ng-container>

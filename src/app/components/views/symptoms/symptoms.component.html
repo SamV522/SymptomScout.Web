@@ -16,6 +16,7 @@
     <div>
         <div class="search-header">Symptoms</div>
         <div class="search-list">
+            <app-symptom-card [symptom]="symptom" [disableRemoveSymptom]="true" *ngFor="let symptom of filteredSymptoms"></app-symptom-card>
         </div>
     </div>
 </div>

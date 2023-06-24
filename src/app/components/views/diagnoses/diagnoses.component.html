@@ -16,9 +16,7 @@
     <div>
         <div class="search-header">Diagnoses</div>
         <div class="search-list">
-            <div class="search-list-item" *ngFor="let diagnosis of filteredDiagnoses;">
-                <div class="search-list-item-label">{{ diagnosis.name }}</div>
-            </div>
+            <app-diagnosis-card [diagnosis]="diagnosis" *ngFor="let diagnosis of filteredDiagnoses"></app-diagnosis-card>
         </div>
     </div>
 </div>

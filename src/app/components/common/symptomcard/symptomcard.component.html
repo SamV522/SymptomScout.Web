@@ -1,5 +1,5 @@
 <div class="content">
     <div class="label">{{ symptom.name }}</div>
-    <button mat-icon-button (click)="openSymptomClickEvent(symptom)"><mat-icon class="open-icon">open_in_new</mat-icon></button>
-    <button mat-icon-button (click)="removeSymptomClick.emit(symptom)"><mat-icon class="remove-icon">remove_circle_outline</mat-icon></button>
+    <button *ngIf="!disableOpenSymptom" mat-icon-button (click)="openSymptomClickEvent(symptom)"><mat-icon class="open-icon">open_in_new</mat-icon></button>
+    <button *ngIf="!disableRemoveSymptom" mat-icon-button (click)="removeSymptomClick.emit(symptom)"><mat-icon class="remove-icon">remove_circle_outline</mat-icon></button>
 </div>
