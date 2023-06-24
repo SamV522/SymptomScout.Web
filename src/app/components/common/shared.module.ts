@@ -10,8 +10,9 @@ import { FormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SymptomCardComponent as SymptomCardComponent } from './symptomcard/symptomcard.component';
+import { SymptomCardComponent } from './symptomcard/symptomcard.component';
 import { DiagnosisCardComponent } from './diagnosiscard/diagnosiscard.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 const modules = [
   CommonModule,
@@ -24,7 +25,8 @@ const modules = [
   FormsModule,
   MatCheckboxModule,
   MatIconModule,
-  MatButtonModule
+  MatButtonModule,
+  MatSidenavModule
 ];
 
 @NgModule({

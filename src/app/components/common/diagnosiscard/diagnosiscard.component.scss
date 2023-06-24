@@ -5,7 +5,7 @@ $warn: map-get(custom-theme.$SymptomScoutWeb-theme, "warn");
 
 div.content {
     display: flex;
-    flex-grow: 0;
+    flex-grow: 1;
     flex-direction: row;
     font-weight: bolder;
     min-height: 40px;

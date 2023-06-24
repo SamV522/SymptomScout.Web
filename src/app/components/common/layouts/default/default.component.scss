@@ -56,7 +56,8 @@ body {
 }
 
 .nav {
-    flex: 0 0 20vw;
+    flex-grow: 0;
+    flex-shrink: 0;
     background-color: green;
 }
 

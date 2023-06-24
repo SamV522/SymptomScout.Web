@@ -11,7 +11,7 @@
             </div>
             <!-- Symptoms -->
             <div class="list hide-scroll">
-                <app-symptom-card [symptom]="diagnosisSymptom" *ngFor="let diagnosisSymptom of diagnosis.symptoms;">
+                <app-symptom-card [disableRemoveSymptom]="true" [symptom]="diagnosisSymptom" *ngFor="let diagnosisSymptom of diagnosis.symptoms;">
                 </app-symptom-card>
             </div>
         </div>

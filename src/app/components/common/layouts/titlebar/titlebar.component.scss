@@ -14,3 +14,7 @@ div.content {
     background: linear-gradient(0deg, map-get($primary, 900) 0%, map-get($primary, 500));
     text-shadow: 2px 2px 4px black;
 }
+
+div.nurse {
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 <div class="flex head-section">
     <div class="flex head-section-label">Diagnoses</div>
-    <div class="flex">
+    <div class="flex flex-center">
         <mat-form-field>
             <mat-label>Diagnosis</mat-label>
             <input 
@@ -14,7 +14,6 @@
 </div>
 <div class="search">
     <div>
-        <div class="search-header">Diagnoses</div>
         <div class="search-list">
             <app-diagnosis-card [diagnosis]="diagnosis" *ngFor="let diagnosis of filteredDiagnoses"></app-diagnosis-card>
         </div>

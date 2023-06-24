@@ -1,6 +1,10 @@
-<app-titlebar class="header"></app-titlebar>
+<app-titlebar (onNurseClick)="drawer.toggle()" class="header"></app-titlebar>
 <div class="middle">
-    <app-sidenav class="nav"></app-sidenav>
+    <mat-drawer-container class="nav">
+        <mat-drawer #drawer mode="side" opened="true">
+            <app-sidenav ></app-sidenav>
+        </mat-drawer>
+    </mat-drawer-container>
     <div class="content">
         <div class="main">
             <mat-card>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-titlebar',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./titlebar.component.scss']
 })
 export class TitlebarComponent {
-
+  @Output() onNurseClick = new EventEmitter();
 }
