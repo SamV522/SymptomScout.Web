@@ -18,6 +18,10 @@ export class ScoutService {
     return this.httpClient.get<Symptom[]>(`${this.baseUrl}/symptoms`);
   }
 
+  getSymptom(id: number): Observable<Symptom> {
+    return this.httpClient.get<Symptom>(`${this.baseUrl}/symptoms/${id}`)
+  }
+
   getDiagnoses(): Observable<Diagnosis[]> {
     return this.httpClient.get<Diagnosis[]>(`${this.baseUrl}/diagnoses`);
   }
@@ -35,6 +39,7 @@ export class Symptom {
   symptomId!: number;
   name!: string;
   description!: string;
+  diagnoses?: Diagnosis[];
 }
 
 export class Diagnosis{

@@ -47,7 +47,7 @@ $md-symptomscoutolive: (
     )
 );
 
-$md-symptomscoutpurple: (
+$-md-symptomscoutpurple: (
     50 : #efecf3,
     100 : #d7d0e0,
     200 : #bdb0cc,
@@ -113,20 +113,20 @@ $md-symptomscoutgrey: (
     )
 );
 
-$SymptomScoutWeb-primary: mat.define-palette($md-symptomscoutolive);
-$SymptomScoutWeb-accent: mat.define-palette($md-symptomscoutpurple);
-$SymptomScoutWeb-mono: mat.define-palette($md-symptomscoutgrey);
+$-SymptomScoutWeb-primary: mat.define-palette($md-symptomscoutolive);
+$-SymptomScoutWeb-accent: mat.define-palette($-md-symptomscoutpurple);
+$-SymptomScoutWeb-mono: mat.define-palette($md-symptomscoutgrey);
 
 // The warn palette is optional (defaults to red).
-$SymptomScoutWeb-warn: mat.define-palette(mat.$red-palette);
+$-SymptomScoutWeb-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $SymptomScoutWeb-theme: mat.define-light-theme((
   color: (
-    primary: $SymptomScoutWeb-primary,
-    accent: $SymptomScoutWeb-accent,
-    warn: $SymptomScoutWeb-warn
+    primary: $-SymptomScoutWeb-primary,
+    accent: $-SymptomScoutWeb-accent,
+    warn: $-SymptomScoutWeb-warn
   )
 ));
 

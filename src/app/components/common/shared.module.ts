@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SymptomCardComponent as SymptomCardComponent } from './symptomcard/symptomcard.component';
+import { DiagnosisCardComponent } from './diagnosiscard/diagnosiscard.component';
 
 const modules = [
   CommonModule,
@@ -27,8 +29,14 @@ const modules = [
 
 @NgModule({
   declarations: [
+    SymptomCardComponent,
+    DiagnosisCardComponent
   ],
   imports: modules,
-  exports: modules
+  exports: [
+    ...modules,
+    SymptomCardComponent,
+    DiagnosisCardComponent
+  ]
 })
 export class SharedModule { }

@@ -1,0 +1,20 @@
+<ng-container *ngIf="symptom$ | async as symptom">
+    <div class="flex-column-container flex-grow">
+        <!-- Heading -->
+        <div class="heading-section-label flex-grow">
+            {{ symptom.name }}
+        </div>
+        <div class="flex-gap flex-row-container flex-grow content">
+            <!-- Description -->
+            <div class="flex-grow">
+                {{ symptom.description }}
+            </div>
+            <!-- Diagnoses -->
+            <div class="list hide-scroll">
+                <app-diagnosis-card *ngFor="let diagnosis of symptom.diagnoses;">
+
+                </app-diagnosis-card>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,46 @@
+@use '../../../../custom-theme.scss';
+
+$primary: map-get(custom-theme.$SymptomScoutWeb-theme, "primary");
+$warn: map-get(custom-theme.$SymptomScoutWeb-theme, "warn");
+
+div.content {
+    display: flex;
+    flex-grow: 0;
+    flex-direction: row;
+    font-weight: bolder;
+    min-height: 40px;
+    max-height: 40px;
+    border: 2px solid map-get($primary, 600);
+    border-radius: 28px;
+    box-shadow: 1px 1px 4px black;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background: map-get($primary, 200);
+}
+
+div.label {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    cursor: default;
+}
+
+mat-icon {
+    display:flex;
+    flex-shrink: 1;
+    width: 48px;
+}
+
+mat-icon.open-icon {
+    color: rgb(50, 50, 202);
+}
+
+mat-icon.edit-icon {
+
+}
+
+mat-icon.remove-icon {
+    color:  map-get($warn, 700);
+}

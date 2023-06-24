@@ -21,16 +21,16 @@
 <div class="search">
     <div>
         <div class="search-header">Symptoms</div>
-        <div class="search-list">
-            <div class="search-list-item" *ngFor="let symptom of symptomsToSearch;">
-                <div class="search-list-item-label">{{ symptom.name }}</div>                    
-                <button mat-icon-button (click)="removeSymptom(symptom)"><mat-icon class="remove-search-list-item-icon">remove_circle_outline</mat-icon></button>
-            </div>
+        <div class="search-list hide-scroll">
+            <app-symptom-card *ngFor="let symptom of symptomsToSearch;"
+                [symptom]="symptom"
+                (removeSymptomClick)="removeSymptom(symptom)">
+            </app-symptom-card>
         </div>
     </div>
     <div>
         <div class="search-header">Possible Diagnoses</div>
-        <div class="search-list">
+        <div class="search-list hide-scroll">
             <div class="search-list-item" *ngFor="let diagnosis of diagnoses;">
                 {{ diagnosis.name }}
             </div>

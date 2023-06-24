@@ -1,6 +1,6 @@
-@import '../../../../../custom-theme.scss';
+@use '../../../../../custom-theme.scss';
 
-$accent: map-get($SymptomScoutWeb-theme, "accent");
+$accent: map-get(custom-theme.$SymptomScoutWeb-theme, "accent");
 $accentContrast: map-get($accent, "contrast");
 
 div.content {

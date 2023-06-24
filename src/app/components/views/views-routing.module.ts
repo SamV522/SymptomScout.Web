@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SymptomMatchComponent } from './symptom-match/symptom-match.component';
 import { SymptomsComponent } from './symptoms/symptoms.component';
 import { DiagnosesComponent } from './diagnoses/diagnoses.component';
+import { SymptomComponent } from './symptom/symptom.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'symptom/match',
     component: SymptomMatchComponent
+  },
+  {
+    path: 'symptom/:id',
+    component: SymptomComponent
   },
   {
     path: 'symptoms',

@@ -52,7 +52,6 @@ export class SymptomMatchComponent implements AfterViewInit {
   addSymptomByInput(): void {
     let symptom = this.filteredSymptoms.find(s => s.name.substring(0,this.symptomInput.length).toLowerCase() == this.symptomInput.toLowerCase());
 
-    console.log(symptom);
     if (!symptom)
       return;
 
