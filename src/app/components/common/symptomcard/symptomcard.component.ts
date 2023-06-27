@@ -21,6 +21,6 @@ export class SymptomCardComponent {
 
   openSymptomClickEvent(symptom: Symptom) {
     this.openSymptomClick.emit(symptom);
-    this.router.navigate(['symptom', symptom.symptomId])
+    this.router.navigate(['symptoms', symptom.symptomId])
   }
 }

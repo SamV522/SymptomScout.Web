@@ -29,11 +29,20 @@ div.header {
     padding-bottom: 10px;
 }
 
+div.content {
+    padding-left: 20px;
+}
+
 div.flex-gap {
     display: flex;
     justify-content: space-around;
+    gap: 20px;
 }
 
 div.description {
-    max-width: 400px;
+    display: flex;
+    text-align: justify;
+    min-width: 440px;
+    max-width: 600px;
+    flex-grow: 1;
 }

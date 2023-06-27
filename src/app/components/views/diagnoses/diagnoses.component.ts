@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Diagnosis, ScoutService, Symptom } from '../../../services/scout.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-diagnoses',
   templateUrl: './diagnoses.component.html',
   styleUrls: ['./diagnoses.component.scss']
 })
-export class DiagnosesComponent {
+export class DiagnosesComponent implements OnInit, OnDestroy {
+  private unsubscribe = new Subject<void>();
 
   diagnosesInput: string = '';
   diagnoses: Diagnosis[] = [];
@@ -20,6 +22,16 @@ export class DiagnosesComponent {
 
   ngOnInit(): void {
     this.updateDiagnoses();
+    this.scoutService.onDiagnosesUpdated$.pipe(
+      takeUntil(this.unsubscribe)
+    ).subscribe(diagnoses => {
+      this.diagnoses = diagnoses;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   updateDiagnoses()

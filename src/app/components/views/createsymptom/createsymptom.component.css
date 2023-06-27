@@ -1,0 +1,21 @@
+div.symptom-list {
+    display: flex;
+    flex-grow: 1;
+    height: 480px;
+    max-width: 1000px;
+    padding-bottom: 10px;
+
+    overflow-y: scroll;
+}
+
+div.symptom-top-controls {
+    padding-left: 10px;
+}
+
+div.symptom-bottom-controls {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-between;
+}

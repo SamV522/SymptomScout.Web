@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { display: flex; flex-grow: 1; height: 100%; min-width: auto;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-list-item.selected {
+    background-color: rgb(0,0,0,0.1);
+}
 
 div.heading-section-label {
     font-size: 48px;
@@ -10,29 +14,59 @@ div.heading-section-label {
     padding-bottom: 10px;
 }
 
-div.flex-column-container {
+.flex-column-container {
     display: flex;
     flex-direction: column;
 }
 
-div.flex-row-container {
+.flex-row-container {
     display: flex;
     flex-direction: row;
 }
 
-div.flex-grow {
+.flex-reverserow-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.flex-grow {
     display: flex;
     flex-grow: 1;
 }
 
-div.flex-shrink {
+.flex-shrink {
     display: flex;
     flex-shrink: 1;
 }
 
+.flex-justify-space-between {
+    justify-content: space-between;
+}
+
+.flex-justify-space-around {
+    justify-content: space-around;
+}
+
+.flex-align-space-between {
+    align-content: align-space-between;
+}
+
+.flex-align-space-around {
+    align-content: align-space-around;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
+
+.flex-align-center {
+    align-content: center;
+    flex-wrap: wrap;
+}
+
 .flex-center {
     justify-content: center;
-    align-items: center;
+    align-content: center;
 }
 
 .hide-scroll, .hide-scroll::-webkit-scrollbar {
@@ -41,4 +75,19 @@ div.flex-shrink {
       scrollbar-width: none;  /* Firefox */
       /* Hide scrollbar for Chrome, Safari and Opera */
       display: none;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.max-width-100 {
+    display: flex;
+    max-width: 100%;
+}
+
+div.head-section-label {
+    font-size: 48px;
+    font-weight: bolder;
+    padding-bottom: 10px;
 }

@@ -1,13 +1,35 @@
 <div class="content">
     <mat-nav-list>
-        <mat-list-item routerLink="/symptom/match" routerLinkActive="selected">
+        <mat-list-item routerLink="/symptom/match" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="selected">
             Symptom Match
         </mat-list-item>
-        <mat-list-item routerLink="/diagnoses" routerLinkActive="selected">
-            Diagnoses
-        </mat-list-item>
-        <mat-list-item routerLink="/symptoms" routerLinkActive="selected">
-            Symptoms
-        </mat-list-item>
+        <mat-accordion displayMode="flat">
+            <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Diagnoses
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list-item routerLink="/diagnoses/create/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="selected">
+                    Create Diagnosis
+                </mat-list-item>
+                <mat-list-item routerLink="/diagnoses" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="selected">
+                    Search Diagnoses
+                </mat-list-item>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Symptoms
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list-item routerLink="/symptoms/create/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="selected">
+                    Create Symptom
+                </mat-list-item>
+                <mat-list-item routerLink="/symptoms" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="selected">
+                    Search Symptoms
+                </mat-list-item>
+            </mat-expansion-panel>
+        </mat-accordion>
     </mat-nav-list>
 </div>

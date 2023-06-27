@@ -20,6 +20,6 @@ export class DiagnosisCardComponent {
 
   openDiagnosisClickEvent(diagnosis: Diagnosis) {
     this.openDiagnosisClick.emit(diagnosis);
-    this.router.navigate(['diagnosis', diagnosis.diagnosisId])
+    this.router.navigate(['diagnoses', diagnosis.diagnosisId])
   }
 }
