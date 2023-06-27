@@ -6,13 +6,19 @@
         </div>
         <div class="flex-gap flex-row-container flex-grow content">
             <!-- Description -->
-            <div class="description flex-grow">
-                {{ diagnosis.description }}
+            <div class="flex-column-container">
+                <h3>Description</h3>
+                <div class="description flex-grow">
+                    {{ diagnosis.description }}
+                </div>
             </div>
             <!-- Symptoms -->
-            <div class="list hide-scroll">
-                <app-symptom-card [disableRemoveSymptom]="true" [symptom]="diagnosisSymptom" *ngFor="let diagnosisSymptom of diagnosis.symptoms;">
-                </app-symptom-card>
+            <div class="flex-column-container">
+                <h3>Symptoms</h3>
+                <div class="list hide-scroll">
+                    <app-symptom-card [disableRemoveSymptom]="true" [symptom]="diagnosisSymptom" *ngFor="let diagnosisSymptom of diagnosis.symptoms;">
+                    </app-symptom-card>
+                </div>
             </div>
         </div>
     </div>

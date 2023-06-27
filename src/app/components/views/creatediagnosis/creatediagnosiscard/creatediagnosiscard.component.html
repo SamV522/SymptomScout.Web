@@ -1,0 +1,107 @@
+<div #target class="flex-reverserow-container max-width-100" matRipple [matRippleDisabled]="true">
+    <mat-expansion-panel class="max-width-100" [expanded]="expanded" (afterExpand)="onAfterExpand(target)">
+        <mat-expansion-panel-header>
+            <!-- Name -->
+            <mat-panel-title>
+                <mat-icon class="status-icon" 
+                [title]="unfinished() ? 'Diagnosis has not been completed' : 'Diagnosis has been queued'" 
+                [color]="unfinished() ? 'warn' : 'primary'" >
+                    {{ unfinished() ? "info_outline" : "done_circled_outlined"}}
+                </mat-icon>
+                {{ diagnosisForm.controls['nameInput'].valid ? diagnosisForm.value.nameInput : "New Diagnosis #"+id }}
+            </mat-panel-title>
+            <!-- Description -->
+            <mat-panel-description>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-horizontal-stepper linear #stepper>
+            <form [formGroup]="diagnosisForm">
+                <!-- Name-->
+                <mat-step editable="true" label="Name">
+                        <app-tip message="Keep in mind when entering a Diagnosis, the full diagnosis should be used, not abbreviations, e.g. ADD where Attention Deficit Disorder should be used" />
+                        <mat-form-field class="full-width max-width-100">
+                            <mat-label>Name</mat-label>
+                            <input matInput maxlength="60" formControlName="nameInput" placeholder="Depression" required />
+                            <mat-error *ngIf="diagnosisForm.hasError('required', 'nameInput')">Name is required</mat-error>
+                            <mat-error *ngIf="diagnosisForm.hasError('minlength', 'nameInput')">Name must be at least 3 characters long</mat-error>
+                        </mat-form-field>
+                    <div class="stepper-controls">
+                        <button mat-raised-button color="primary" (click)="stepper.next()" [disabled]="diagnosisForm.invalid">Next</button>
+                    </div>
+                </mat-step>
+                <!-- Description -->
+                <mat-step editable="true" label="Description">
+                    <app-tip message="You can change the description later" />
+                    <app-tip message="When describing a diagnosis, there should be enough information to differentiate similar diagnoses, and have sufficient information to locate the diagnoses in the DSM." />
+                    <div class="description-input">
+                        <mat-form-field appearance="fill" class="full-width">
+                            <textarea matInput formControlName="descriptionInput" rows=8 cols="70" wrap="hard"
+                                placeholder="Ex. A mood disorder, categorized by changes in mood, sleep, appetite and sense of self worth"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="stepper-controls">
+                        <button mat-raised-button color="primary" (click)="stepper.next()">Next</button>
+                        <button mat-raised-button (click)="stepper.previous()">Back</button>
+                    </div>
+                </mat-step>
+                <!-- Symptoms -->
+                <mat-step editable="true" label="Symptoms">
+                    <app-tip message="You change symptoms later, but this will save you from having to do them one diagnosis at a time!" />
+                    <div class="flex-reverserow-container flex-align-center flex-gap">
+                        <div class="flex-grow flex-align-center">
+                            <app-symptom-picker class="flex-justify-center flex-grow" (onSymptomSelected)="toggleSymptom($event)" />
+                        </div>
+                        <div class="flex-column-container flex-grow">
+                            <p>These symptoms will be included:</p>
+                            <div class="flex-column-container mat-elevation-z1">
+                                <mat-list class="flex-column-container list">
+                                    <ng-container *ngFor="let symptom of selectedSymptoms">
+                                        <div class="flex-row-container">
+                                            <mat-list-item class="flex-row-container">
+                                                {{symptom.name}}
+                                            </mat-list-item>
+                                            <div>
+                                                <button mat-icon-button (click)="removeSymptom(symptom)">
+                                                    <mat-icon color="warn">remove_circle_outlined</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <mat-divider></mat-divider>
+                                    </ng-container>
+                                </mat-list>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stepper-controls">
+                        <button mat-raised-button color="primary" (click)="stepper.next()">Next</button>
+                        <button mat-raised-button (click)="stepper.previous()">Back</button>
+                    </div>
+                </mat-step>
+                <mat-step label="Review">
+                    <app-tip message="Don't worry, you can come back and change these if you forgot anything, but don't forget to press 'Create' once you've finished filling out your diagnoses!" />
+                    <div class="flex-row-container flex-justify-space-around">
+                        <div class="flex-column-container flex-shrink">
+                            <p>
+                                <strong>Name:</strong> {{diagnosisForm.value.nameInput}}<br />
+                                <strong>Description:</strong> {{ diagnosisForm.value.descriptionInput }}
+                            </p>
+                        </div>
+                        <div class="flex-column-container">
+                            <p>
+                                <strong>Symptoms:</strong>
+                            </p>
+                            <ul>
+                                <li *ngFor="let symptom of selectedSymptoms">{{symptom.name}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="stepper-controls">
+                        <button mat-raised-button color="primary" type="submit" (click)="submitUpdate()" [disabled]="diagnosisForm.invalid">Done</button>
+                        <button mat-raised-button (click)="stepper.previous()">Back</button>
+                    </div>
+                </mat-step>
+                </form>
+        </mat-horizontal-stepper>
+    </mat-expansion-panel>
+</div>
+<mat-divider></mat-divider>

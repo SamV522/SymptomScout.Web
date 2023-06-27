@@ -5,6 +5,8 @@ import { SymptomsComponent } from './symptoms/symptoms.component';
 import { DiagnosesComponent } from './diagnoses/diagnoses.component';
 import { SymptomComponent } from './symptom/symptom.component';
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
+import { CreateDiagnosisComponent } from './creatediagnosis/creatediagnosis.component';
+import { CreateSymptomComponent } from './createsymptom/createsymptom.component';
 
 const routes: Routes = [
   {
@@ -22,16 +24,38 @@ const routes: Routes = [
   },
   {
     path: 'symptoms',
-    component: SymptomsComponent
+    children: [
+      {
+        path:'',
+        component: SymptomsComponent,
+      },
+      {
+        path: "create",
+        component: CreateSymptomComponent
+      },
+      {
+        path: ":id",
+        component: SymptomComponent
+      }
+    ]
   },
   {
     path: 'diagnoses',
-    component: DiagnosesComponent
-  },
-  {
-    path: 'diagnosis/:id',
-    component: DiagnosisComponent
-  },
+    children: [
+      {
+        path: '',
+        component: DiagnosesComponent,
+      },
+      {
+        path: "create",
+        component: CreateDiagnosisComponent
+      },
+      {
+        path: ":id",
+        component: DiagnosisComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

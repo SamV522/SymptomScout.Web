@@ -1,0 +1,56 @@
+div.stepper-controls {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+mat-icon.status-icon {
+    padding-right:10px;
+}
+
+mat-step, mat-stepper-horizontal {
+    max-width: 100%;
+}
+
+mat-step { 
+    padding-top: 20px;
+}
+
+mat-expansion-panel {
+    border-radius: unset !important;
+    max-width: 100%;
+}
+
+.mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.flex-gap {
+    column-gap: 20px;
+}
+
+.list {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex: 0 0 140px;
+    overflow-y: scroll;
+}
+
+.description-input {
+    display: flex;
+    max-width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+textarea {
+    display: flex;
+    resize: none;
+    word-break:break-all;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}

@@ -1,0 +1,51 @@
+<div class="flex head-section-label">Create Symptom</div>
+<mat-card>
+    <div class="symptom-top-controls flex-reverserow-container flex-grow">
+        <div class="flex-reverserow-container">
+            <!--
+                copy pasting for later....
+            <button mat-icon-button
+                (click)="copySymptomRequests()">
+                    <mat-icon>content_copy</mat-icon>
+            </button>
+            <button mat-icon-button
+                (click)="pasteSymptomRequests()">
+                    <mat-icon>content_paste</mat-icon>
+            </button>
+            -->
+            <button mat-icon-button color="primary" 
+                title="Add Diagnosis"
+                (click)="addSymptomRequest()">
+                    <mat-icon>add_circle_outlined</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" 
+                title="Remove Last Symptom"
+                (click)="removeLastSymptomRequest()" 
+                [disabled]="createSymptomRequests.length < 2">
+                    <mat-icon>remove_circle_outlined</mat-icon>
+            </button>
+        </div>
+        <div class="flex-grow flex-align-center">Ready: {{ countValidRequests() }} / {{ createSymptomRequests.length }}</div>
+        <div class="flex-grow flex-align-center">
+            <button mat-button (click)="allExpanded=true">Expand All</button>
+            <button mat-button (click)="allExpanded=false">Collapse All</button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="symptom-list">
+        <ng-container *ngIf="!loading">
+            <mat-accordion displayMode="flat" multi="true">
+                <app-createsymptomcard [expanded]="allExpanded" *ngFor="let request of createSymptomRequests;"
+                [symptoms$]="symptoms$"
+                [id]="request.entryId"
+                (onDirtied)="request.valid = false"
+                (requestUpdatedEvent)="updateSymptomRequest(request.entryId, $event)"
+                (afterExpanded)="scrollIntoView($event)"
+                ></app-createsymptomcard>
+            </mat-accordion>
+        </ng-container>
+    </div>
+</mat-card>
+<div class="symptom-bottom-controls flex-reverserow-container">
+    <button mat-raised-button color="primary" style="width: 120px" [disabled]="anyInvalidRequests()" (click)="createDiagnoses()">Create</button>
+</div>

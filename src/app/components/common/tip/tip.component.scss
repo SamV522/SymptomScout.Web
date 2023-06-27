@@ -1,0 +1,19 @@
+@use '../../../../custom-theme.scss';
+
+$accent: map-get(custom-theme.$SymptomScoutWeb-theme, "accent");
+
+div, mat-icon {
+    display: flex;
+}
+
+div.tip {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    background: transparent;
+    color: map-get($accent, 900);
+    padding-bottom: 10px;
+}

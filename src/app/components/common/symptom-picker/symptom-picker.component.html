@@ -1,0 +1,18 @@
+<mat-form-field>
+    <mat-label>Symptom</mat-label>
+    <input 
+        [formControl]="symptomInputControl"
+        matInput type="text" 
+        placeholder="ex. Low Mood..." 
+        (input)="onSymptomInputChange($event)" 
+        [matAutocomplete]="auto" />
+    <mat-autocomplete #auto="matAutocomplete"
+    [autoSelectActiveOption]="false"
+    [autoActiveFirstOption]="true"
+    (optionSelected)="onAutoCompleteSelected($event);">
+        <!-- If these options are empty, the autocomplete will not show -->
+            <mat-option *ngFor="let symptom of filteredSymptoms;" [value]="symptom">
+                {{symptom.name}}
+            </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

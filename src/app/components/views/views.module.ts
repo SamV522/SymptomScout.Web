@@ -6,6 +6,10 @@ import { SymptomsComponent } from './symptoms/symptoms.component';
 import { DiagnosesComponent } from './diagnoses/diagnoses.component';
 import { SymptomComponent } from './symptom/symptom.component';
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
+import { CreateDiagnosisComponent } from './creatediagnosis/creatediagnosis.component';
+import { CreateDiagnosisCardComponent } from './creatediagnosis/creatediagnosiscard/creatediagnosiscard.component';
+import { CreateSymptomComponent } from './createsymptom/createsymptom.component';
+import { CreateSymptomCardComponent } from './createsymptom/createsymptomcard/createsymptomcard.component';
 
 
 @NgModule({
@@ -15,6 +19,10 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component';
     DiagnosesComponent,
     SymptomComponent,
     DiagnosisComponent,
+    CreateDiagnosisComponent,
+    CreateDiagnosisCardComponent,
+    CreateSymptomComponent,
+    CreateSymptomCardComponent,
   ],
   imports: [
     SharedModule,

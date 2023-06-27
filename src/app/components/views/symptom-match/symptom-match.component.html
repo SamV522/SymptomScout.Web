@@ -6,7 +6,7 @@
             <input 
             [(ngModel)]="symptomInput" 
             matInput type="text" 
-            placeholder="Low Mood..." 
+            placeholder="ex. Low Mood..." 
             (keydown.enter)="addSymptomByInput()"
             (input)="onSymptomInputChange($event)" [matAutocomplete]="symptomAutoComplete">
             <mat-autocomplete #symptomAutoComplete="matAutocomplete" (optionSelected)="symptomSelected($event)">
@@ -19,8 +19,8 @@
     </div>
 </div>
 <div class="search">
-    <div>
-        <div class="search-header">Symptoms</div>
+    <div class="flex-column-container">
+        <h3>Symptoms</h3>
         <div class="search-list hide-scroll">
             <app-symptom-card *ngFor="let symptom of symptomsToSearch;"
                 [symptom]="symptom"
@@ -28,8 +28,9 @@
             </app-symptom-card>
         </div>
     </div>
-    <div>
-        <div class="search-header">Possible Diagnoses</div>
+    <div class="flex-gap flex-row-container"></div>
+    <div class="flex-column-container">
+        <h3>Possible Diagnoses</h3>
         <div class="search-list hide-scroll">
             <app-diagnosis-card *ngFor="let diagnosis of diagnoses;" [diagnosis]="diagnosis">
             </app-diagnosis-card>

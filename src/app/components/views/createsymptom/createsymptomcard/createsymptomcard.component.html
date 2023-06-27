@@ -1,0 +1,65 @@
+<div #target class="flex-reverserow-container max-width-100" matRipple [matRippleDisabled]="true">
+    <mat-expansion-panel class="max-width-100" [expanded]="expanded" (afterExpand)="onAfterExpand(target)">
+        <mat-expansion-panel-header>
+            <!-- Name -->
+            <mat-panel-title>
+                <mat-icon class="status-icon" 
+                [title]="unfinished() ? 'Symptom has not been completed' : 'Symptom has been queued'" 
+                [color]="unfinished() ? 'warn' : 'primary'" >
+                    {{ unfinished() ? "info_outline" : "done_circled_outlined"}}
+                </mat-icon>
+                {{ symptomForm.controls['nameInput'].valid ? symptomForm.value.nameInput : "New Symptom #"+id }}
+            </mat-panel-title>
+            <!-- Description -->
+            <mat-panel-description>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-horizontal-stepper linear #stepper>
+            <form [formGroup]="symptomForm">
+                <!-- Name-->
+                <mat-step editable="true" label="Name">
+                        <app-tip message="Keep in mind when entering a Symptom, it needs to be easy to search later." />
+                        <mat-form-field class="full-width max-width-100">
+                            <mat-label>Name</mat-label>
+                            <input matInput maxlength="60" formControlName="nameInput" placeholder="Low Mood" required />
+                            <mat-error *ngIf="symptomForm.hasError('required', 'nameInput')">Name is required</mat-error>
+                            <mat-error *ngIf="symptomForm.hasError('minlength', 'nameInput')">Name must be at least 3 characters long</mat-error>
+                        </mat-form-field>
+                    <div class="stepper-controls">
+                        <button mat-raised-button color="primary" (click)="stepper.next()" [disabled]="symptomForm.invalid">Next</button>
+                    </div>
+                </mat-step>
+                <!-- Description -->
+                <mat-step editable="true" label="Description">
+                    <app-tip message="When describing a symptom, there should be enough information to differentiate similar symptoms, and have sufficient information to locate the symptom in the DSM.  This can be changed later." />
+                    <div class="description-input">
+                        <mat-form-field appearance="fill" class="full-width">
+                            <textarea matInput formControlName="descriptionInput" rows=8 cols="70" wrap="hard"
+                                placeholder="Ex. A mood disorder, categorized by changes in mood, sleep, appetite and sense of self worth"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="stepper-controls">
+                        <button mat-raised-button color="primary" (click)="stepper.next()">Next</button>
+                        <button mat-raised-button (click)="stepper.previous()">Back</button>
+                    </div>
+                </mat-step>
+                <mat-step label="Review">
+                    <app-tip message="Don't worry, you can come back and change these if you forgot anything, but don't forget to press 'Create' once you've finished filling out your symptoms!" />
+                    <div class="flex-row-container flex-justify-space-around">
+                        <div class="flex-column-container flex-shrink">
+                            <p>
+                                <strong>Name:</strong> {{symptomForm.value.nameInput}}<br />
+                                <strong>Description:</strong> {{ symptomForm.value.descriptionInput }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stepper-controls">
+                        <button mat-raised-button color="primary" type="submit" (click)="submitUpdate()" [disabled]="symptomForm.invalid">Done</button>
+                        <button mat-raised-button (click)="stepper.previous()">Back</button>
+                    </div>
+                </mat-step>
+                </form>
+        </mat-horizontal-stepper>
+    </mat-expansion-panel>
+</div>
+<mat-divider></mat-divider>
