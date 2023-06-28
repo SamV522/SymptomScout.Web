@@ -20,6 +20,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatRippleModule } from '@angular/material/core';
 import { SymptomPickerComponent } from './symptom-picker/symptom-picker.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ErrorInterceptorProvider } from './error-interceptor/error-interceptor';
 
 
 const modules = [
@@ -57,6 +58,9 @@ const modules = [
     DiagnosisCardComponent,
     TipComponent,
     SymptomPickerComponent
+  ],
+  providers: [
+    ErrorInterceptorProvider
   ]
 })
 export class SharedModule { }
