@@ -65,7 +65,7 @@ export class CreateSymptomComponent implements OnInit {
     element.scrollIntoView({behavior: 'smooth', block: 'start'});
   }
 
-  createDiagnoses() {
+  createSymptoms() {
     let requests = this.createSymptomRequests.map(entry => {
       let request: CreateSymptomRequest = {
         name: entry.name,
