@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { Subject, takeUntil } from 'rxjs';
 import { Diagnosis, ScoutService, Symptom } from 'src/app/services/scout.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { Diagnosis, ScoutService, Symptom } from 'src/app/services/scout.service
   host: { 'style': 'display: flex; flex-direction: column; width:100%; height: 100%;'}
 })
 export class SymptomMatchComponent implements AfterViewInit {
-
+  unsubscribe = new Subject<void>();
 
   filteredSymptoms: Symptom[] = [];
   symptoms: Symptom[] = [];
@@ -24,6 +25,11 @@ export class SymptomMatchComponent implements AfterViewInit {
   { }
   ngAfterViewInit(): void {
     this.updateSymptoms();
+    this.scoutService.onSymptomsUpdated$.pipe(
+      takeUntil(this.unsubscribe)
+    ).subscribe(symptoms => {
+      this.symptoms = symptoms;
+    })
   }
 
   updateSymptoms()
