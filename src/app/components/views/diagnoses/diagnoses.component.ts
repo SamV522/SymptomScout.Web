@@ -50,7 +50,7 @@ export class DiagnosesComponent implements OnInit, OnDestroy {
   }
 
   updateFilteredDiagnoses(): void {
-    this.filteredDiagnoses = this.diagnoses.filter(s => s.name.substring(0,this.diagnosesInput.length).toLowerCase() == this.diagnosesInput.toLowerCase());
+    this.filteredDiagnoses = this.diagnoses.filter(s => s.name.toLowerCase().includes(this.diagnosesInput.toLowerCase()));
   }
 
   diagnosisSelected(event: MatAutocompleteSelectedEvent )

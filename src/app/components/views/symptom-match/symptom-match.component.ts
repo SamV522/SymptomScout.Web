@@ -50,13 +50,13 @@ export class SymptomMatchComponent implements AfterViewInit {
     if (this.symptomInput.length < 3)
       this.filteredSymptoms = [];
     else
-      this.filteredSymptoms = this.symptoms.filter(s => s.name.substring(0,this.symptomInput.length).toLowerCase() == this.symptomInput.toLowerCase());
+      this.filteredSymptoms = this.symptoms.filter(s => s.name.toLowerCase().includes(this.symptomInput.toLowerCase()));
       
     this.updateDiagnoses();
   }
 
   addSymptomByInput(): void {
-    let symptom = this.filteredSymptoms.find(s => s.name.substring(0,this.symptomInput.length).toLowerCase() == this.symptomInput.toLowerCase());
+    let symptom = this.filteredSymptoms.find(s => s.name.toLowerCase().includes(this.symptomInput.toLowerCase()));
 
     if (!symptom)
       return;

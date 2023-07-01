@@ -50,7 +50,7 @@ export class SymptomsComponent implements OnInit, OnDestroy {
   }
 
   updateFilteredSymptoms(): void {
-    this.filteredSymptoms = this.symptoms.filter(s => s.name.substring(0,this.symptomInput.length).toLowerCase() == this.symptomInput.toLowerCase());
+    this.filteredSymptoms = this.symptoms.filter(s => s.name.toLowerCase().includes(this.symptomInput.toLowerCase()));
   }
 
   symptomSelected(event: MatAutocompleteSelectedEvent )
