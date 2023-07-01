@@ -77,6 +77,7 @@ export class CreateSymptomComponent implements OnInit {
     this.scoutService.createSymptoms(requests).subscribe({
       next: () => {
         this.createSymptomRequests = [];
+        this.addSymptomRequest();
         this.snackbar.open('Created Succesfully!')
       },
       error: () => {

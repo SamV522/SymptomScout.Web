@@ -77,6 +77,7 @@ export class CreateDiagnosisComponent implements OnInit {
     this.scoutService.createDiagnoses(requests).subscribe({
       next: () => {
         this.createDiagnosisRequests = [];
+        this.addDiagnosisRequest();
         this.snackbar.open('Created Succesfully!')
       },
       error: () => {
