@@ -11,6 +11,7 @@ div.list{
     max-width: 400px;
     min-width: 400px;
     height: 400px;
+    flex-grow: 1;
     border: 2px solid map-get($primary, 600);
     border-radius: 12px;
     box-shadow: inset 1px 1px 4px black;
@@ -24,16 +25,21 @@ div.list{
     row-gap: 10px;
 }
 
-div.header {
-    max-height: 80px;
-    padding-bottom: 10px;
-}
-
 div.flex-gap {
     display: flex;
     justify-content: space-around;
 }
 
 div.description {
-    max-width: 400px;
+    display: flex;
+    background-color: white;
+    text-align: left;
+    min-width: 440px;
+    max-width: 800px;
+    height: 400px;
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: scroll;
+    border-radius: 4px;
+    white-space: pre-line
 }

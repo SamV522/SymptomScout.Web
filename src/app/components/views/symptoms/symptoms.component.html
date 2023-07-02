@@ -1,6 +1,6 @@
 <div class="flex head-section">
-    <h3>Description</h3>
-    <div class="flex">
+    <div class="flex head-section-label">Symptoms</div>
+    <div class="flex flex-center">
         <mat-form-field>
             <mat-label>Symptom</mat-label>
             <input 
@@ -15,7 +15,17 @@
 <div class="search">
     <div>
         <div class="search-list">
-            <app-symptom-card [symptom]="symptom" [disableRemoveSymptom]="true" *ngFor="let symptom of filteredSymptoms"></app-symptom-card>
+            <ng-container *ngIf="symptoms$ | async as symptoms; else loadingSpinner">
+                <ng-container *ngFor="let symptom of symptoms">
+                    <app-symptom-card 
+                    *ngIf="symptom.name.toLowerCase().includes(symptomInput.toLowerCase())" 
+                    [symptom]="symptom" [disableRemoveSymptom]="true">
+                </app-symptom-card>
+                </ng-container>
+            </ng-container>
+            <ng-template #loadingSpinner>
+                <mat-spinner color="accent"></mat-spinner>
+            </ng-template>
         </div>
     </div>
 </div>

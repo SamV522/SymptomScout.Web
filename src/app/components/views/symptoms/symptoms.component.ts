@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { ScoutService, Symptom } from '../../../services/scout.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, merge, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-symptoms',
@@ -11,6 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
 export class SymptomsComponent implements OnInit, OnDestroy {
   private unsubscribe = new Subject<void>();
 
+  symptoms$!: Observable<Symptom[]>;
   symptomInput: string = '';
   symptoms: Symptom[] = [];
   filteredSymptoms: Symptom[] = [];
@@ -20,13 +21,11 @@ export class SymptomsComponent implements OnInit, OnDestroy {
   )
   { }
 
-  ngOnInit(): void {
-    this.updateSymptoms();
-    this.scoutService.onSymptomsUpdated$.pipe(
-      takeUntil(this.unsubscribe)
-    ).subscribe(symptoms => {
-      this.symptoms = symptoms;
-    })
+  ngOnInit(): void {  
+    this.symptoms$ = merge(
+      this.scoutService.getSymptoms(),
+      this.scoutService.onSymptomsUpdated$.pipe(takeUntil(this.unsubscribe))
+    );
   }
 
   ngOnDestroy(): void {
@@ -36,7 +35,7 @@ export class SymptomsComponent implements OnInit, OnDestroy {
 
   updateSymptoms()
   {
-    this.scoutService.getSymptoms().subscribe({
+    this.symptoms$.subscribe({
       next: 
       (symptoms) => {
         this.symptoms = symptoms;

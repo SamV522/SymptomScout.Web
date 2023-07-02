@@ -5,7 +5,8 @@ import { Symptom } from 'src/app/services/scout.service';
 @Component({
   selector: 'app-symptom-card',
   templateUrl: './symptomcard.component.html',
-  styleUrls: ['./symptomcard.component.scss']
+  styleUrls: ['./symptomcard.component.scss'],
+  host: { 'style': 'display: flex; width:100%;'}
 })
 export class SymptomCardComponent {
   @Input() symptom!: Symptom;

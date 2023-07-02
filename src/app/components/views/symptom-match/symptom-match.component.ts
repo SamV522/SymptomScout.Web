@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, of, takeUntil } from 'rxjs';
 import { Diagnosis, ScoutService, Symptom } from 'src/app/services/scout.service';
 
 @Component({
@@ -15,14 +15,16 @@ export class SymptomMatchComponent implements AfterViewInit {
   filteredSymptoms: Symptom[] = [];
   symptoms: Symptom[] = [];
   symptomInput: string = '';
-  diagnoses: Diagnosis[] = [];
 
   symptomsToSearch: Symptom[] = [];
+
+  diagnoses$!: Observable<Diagnosis[]>;
 
   constructor(
     private scoutService: ScoutService
   )
   { }
+
   ngAfterViewInit(): void {
     this.updateSymptoms();
     this.scoutService.onSymptomsUpdated$.pipe(
@@ -66,17 +68,9 @@ export class SymptomMatchComponent implements AfterViewInit {
 
   updateDiagnoses(): void{
     if (this.symptomsToSearch.length < 1)
-      this.diagnoses = [];
+      this.diagnoses$ = of([]);
     else
-      this.scoutService.symptomMatch(this.symptomsToSearch.map(symptom => symptom.symptomId)).subscribe(
-        {
-          next: (diagnoses) => {
-            this.diagnoses = diagnoses;
-          }, error: (error) => {
-            this.diagnoses = [];
-          }
-        }
-      );
+      this.diagnoses$ = this.scoutService.symptomMatch(this.symptomsToSearch.map(symptom => symptom.symptomId))
   }
 
   removeSymptom(symptom: Symptom) {

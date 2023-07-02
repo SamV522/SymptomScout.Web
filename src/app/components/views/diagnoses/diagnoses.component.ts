@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Diagnosis, ScoutService, Symptom } from '../../../services/scout.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Diagnosis, ScoutService } from '../../../services/scout.service';
+import { Observable, Subject, merge, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-diagnoses',
@@ -11,6 +11,7 @@ import { Subject, takeUntil } from 'rxjs';
 export class DiagnosesComponent implements OnInit, OnDestroy {
   private unsubscribe = new Subject<void>();
 
+  public diagnoses$!: Observable<Diagnosis[]>;
   diagnosesInput: string = '';
   diagnoses: Diagnosis[] = [];
   filteredDiagnoses: Diagnosis[] = [];
@@ -21,12 +22,10 @@ export class DiagnosesComponent implements OnInit, OnDestroy {
   { }
 
   ngOnInit(): void {
-    this.updateDiagnoses();
-    this.scoutService.onDiagnosesUpdated$.pipe(
-      takeUntil(this.unsubscribe)
-    ).subscribe(diagnoses => {
-      this.diagnoses = diagnoses;
-    });
+    this.diagnoses$ = merge(
+      this.scoutService.getDiagnoses(),
+      this.scoutService.onDiagnosesUpdated$.pipe(takeUntil(this.unsubscribe))
+    );
   }
 
   ngOnDestroy(): void {
@@ -36,17 +35,15 @@ export class DiagnosesComponent implements OnInit, OnDestroy {
 
   updateDiagnoses()
   {
-    this.scoutService.getDiagnoses().subscribe({
-      next: 
-      (diagnoses) => {
-        this.diagnoses = diagnoses;
-        this.updateFilteredDiagnoses();
-      }, error: (error) =>
-      {
-        console.log(error);
-      }
-    }
-    );
+    this.diagnoses$.subscribe({
+        next: (diagnoses) => {
+          this.diagnoses = diagnoses;
+          this.updateFilteredDiagnoses();
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
   }
 
   updateFilteredDiagnoses(): void {

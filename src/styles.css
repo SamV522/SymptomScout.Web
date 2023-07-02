@@ -67,6 +67,7 @@ div.heading-section-label {
 .flex-center {
     justify-content: center;
     align-content: center;
+    align-items: center;
 }
 
 .hide-scroll, .hide-scroll::-webkit-scrollbar {

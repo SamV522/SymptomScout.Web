@@ -21,7 +21,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { SymptomPickerComponent } from './symptom-picker/symptom-picker.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ErrorInterceptorProvider } from './error-interceptor/error-interceptor';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const modules = [
   CommonModule,
@@ -41,7 +41,8 @@ const modules = [
   ReactiveFormsModule,
   MatTooltipModule,
   MatRippleModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({

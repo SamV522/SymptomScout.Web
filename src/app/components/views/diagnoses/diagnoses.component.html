@@ -15,7 +15,17 @@
 <div class="search">
     <div>
         <div class="search-list">
-            <app-diagnosis-card [diagnosis]="diagnosis" *ngFor="let diagnosis of filteredDiagnoses"></app-diagnosis-card>
+            <ng-container *ngIf="diagnoses$ | async as diagnoses; else loadingSpinner">
+                <ng-container *ngFor="let diagnosis of diagnoses">
+                    <app-diagnosis-card 
+                    *ngIf="diagnosis.name.toLowerCase().includes(diagnosesInput.toLowerCase())" 
+                    [diagnosis]="diagnosis" >
+                </app-diagnosis-card>
+                </ng-container>
+            </ng-container>
+            <ng-template #loadingSpinner>
+                <mat-spinner color="accent"></mat-spinner>
+            </ng-template>
         </div>
     </div>
 </div>

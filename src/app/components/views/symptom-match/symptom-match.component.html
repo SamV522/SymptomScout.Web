@@ -32,8 +32,15 @@
     <div class="flex-column-container">
         <h3>Possible Diagnoses</h3>
         <div class="search-list hide-scroll">
-            <app-diagnosis-card *ngFor="let diagnosis of diagnoses;" [diagnosis]="diagnosis">
-            </app-diagnosis-card>
+            <ng-container *ngIf="symptomsToSearch.length > 0">
+                <ng-container *ngIf="diagnoses$| async as diagnoses  else loadingBlock">
+                    <app-diagnosis-card *ngFor="let diagnosis of diagnoses;" [diagnosis]="diagnosis">
+                    </app-diagnosis-card>
+                </ng-container>
+                <ng-template #loadingBlock>
+                    <mat-spinner color="accent"></mat-spinner>
+                </ng-template>
+            </ng-container>
         </div>
     </div>
 </div>

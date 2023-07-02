@@ -1,4 +1,4 @@
-<ng-container *ngIf="diagnosis$ | async as diagnosis">
+<ng-container *ngIf="diagnosis$ | async as diagnosis; else loadingBlock">
     <div class="flex-column-container flex-grow">
         <!-- Heading -->
         <div class="heading-section-label flex-grow">
@@ -8,7 +8,7 @@
             <!-- Description -->
             <div class="flex-column-container">
                 <h3>Description</h3>
-                <div class="description flex-grow">
+                <div class="description flex-grow mat-elevation-z2">
                     {{ diagnosis.description }}
                 </div>
             </div>
@@ -23,3 +23,8 @@
         </div>
     </div>
 </ng-container>
+<ng-template #loadingBlock>
+    <div class="flex-column-container flex-grow flex-center">
+        <mat-spinner color="accent"></mat-spinner>
+    </div>
+</ng-template>
